@@ -5,6 +5,8 @@ The require statement will include a template only if it has not been
 previously required. That can be used to include subroutines and similar
 structures which should only be included once.
 """
+# Author: Dean Serenevy  <deans@apcisystems.com>
+# This software is Copyright (c) 2013 APCI, LLC. All rights reserved.
 
 from jinja2 import nodes
 from jinja2.ext import Extension

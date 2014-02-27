@@ -8,6 +8,8 @@ Example:
 
 {% if x >= 3 %}{% raise "x must be less than 3" %}{% endif %}
 """
+# Author: Dean Serenevy  <deans@apcisystems.com>
+# This software is Copyright (c) 2013 APCI, LLC. All rights reserved.
 
 from jinja2 import nodes
 from jinja2.ext import Extension
