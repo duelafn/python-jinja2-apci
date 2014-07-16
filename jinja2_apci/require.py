@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """ Jinja extension which provides "require" statement
 
-The require statement will include a template only if it has not been
-previously required. That can be used to include subroutines and similar
-structures which should only be included once.
+The `require` statement will `include` a template only if it has not been
+previously required (aka, "include once"). Unlike the jinja `import`
+statement, `require` allows the included template to contain content, not
+just macros. We use this for code generation where we wish to require
+utility functions, but there are likely other use cases as well.
 """
 # Author: Dean Serenevy  <deans@apcisystems.com>
 # This software is Copyright (c) 2013 APCI, LLC.
