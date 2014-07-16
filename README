@@ -1,0 +1,23 @@
+
+Two simple jinja2 extensions.
+
+raise
+-----
+
+Raise a TemplateRuntimeError with the given error message.
+
+Example:
+
+    {% if x >= 3 %}{% raise "x must be less than 3" %}{% endif %}
+
+
+require
+-------
+
+The require statement will include a template only if it has not been
+previously required. That can be used to include subroutines and similar
+structures which should only be included once.
+
+Example:
+
+    {% require "myfile.tmpl" %}

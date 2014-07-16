@@ -1,0 +1,13 @@
+Source: jinja2-apci
+Maintainer: Dean Serneevy <deans@apcisystems.com>
+Section: python
+Priority: optional
+Build-Depends: python-all-dev (>= 2.6.6-3), debhelper (>= 7.4.3)
+Standards-Version: 3.9.1
+Homepage: https://github.com/duelafn/python-jinja2-apci
+
+Package: python-jinja2-apci
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}, ${shlibs:Depends}, python-jinja2
+Description: APCI LLC's jinja2 extensions
+ Jinja2 Extensions: raise and require
