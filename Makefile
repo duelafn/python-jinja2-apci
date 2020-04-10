@@ -20,29 +20,26 @@ PKG_VERSION = $(shell perl -ne 'print $$1 if /^__version__\s*=\s*"([\d.]+(?:[\-\
 .PHONY: all sdist dist debbuild clean test
 
 
-all: test
+all:
 
-zip: test
-	python setup.py sdist --format=zip
+zip:
+	python3 setup.py sdist --format=zip
 
-sdist: test
-	python setup.py sdist
+sdist:
+	python3 setup.py sdist
 
-dist: test debbuild
+dist: debbuild
 	mv -f debbuild/${PKGNAME}_* debbuild/*.deb dist/
 	rm -rf debbuild
 
-debbuild: test sdist
+debbuild: sdist
 	grep "(${PKG_VERSION}-1)" debian/changelog || (echo "** debian/changelog requires update **" && false)
 	rm -rf debbuild
 	mkdir -p debbuild
 	mv -f dist/${PKGNAME}-${PKG_VERSION}.tar.gz debbuild/${PKGNAME}_${PKG_VERSION}.orig.tar.gz
 	cd debbuild && tar -xzf ${PKGNAME}_${PKG_VERSION}.orig.tar.gz
 	cp -r debian debbuild/${PKGNAME}-${PKG_VERSION}/
-	cd debbuild/${PKGNAME}-${PKG_VERSION} && dpkg-buildpackage -rfakeroot -uc -us
-
-test:
-	unit2 discover -s test
+	cd debbuild/${PKGNAME}-${PKG_VERSION} && dpkg-buildpackage -rfakeroot -uc -us --build=source
 
 clean:
 	pyclean .
